@@ -20,13 +20,13 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}  # Utilisation du secret Docker Hub pour l'utilisateur
-        password: ${{ secrets.DOCKER_PASSWORD }}  # Utilisation du secret Docker Hub pour le mot de passe
+        username: ${{ mgdev220 }}  # Utilisation du secret Docker Hub pour l'utilisateur
+        password: ${{ Magloire14 }}  # Utilisation du secret Docker Hub pour le mot de passe
 
     - name: Build Docker image
       run: |
-        docker build -t mgdev220/my-app:latest .  # Remplacez 'my-app' par le nom de votre image
-        docker push mgdev220/my-app:latest  # Push de l'image vers Docker Hub
+        docker build -t mgdev220/php-app:latest .  # Remplacez 'my-app' par le nom de votre image
+        docker push mgdev220/php-app:latest  # Push de l'image vers Docker Hub
 
   # Job pour déployer sur Kubernetes
   deploy:
@@ -49,8 +49,8 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f k8s/deployment.yaml  # Applique le fichier de déploiement Kubernetes
-        kubectl apply -f k8s/service.yaml     # Applique le fichier de service Kubernetes
+        kubectl apply -f kubernetes/Deployment.yaml  # Applique le fichier de déploiement Kubernetes
+        kubectl apply -f kubernetes/Service.yaml     # Applique le fichier de service Kubernetes
 
     - name: Wait for Deployment to be ready
       run: |
