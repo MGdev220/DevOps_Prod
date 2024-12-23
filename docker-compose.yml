@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    image: mgdev220/php-app
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+  db:
+    image: mgdev220/mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gestion_produits
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
